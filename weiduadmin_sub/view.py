@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from wduser.models import WduserAuthuser, WduserOrg
 import os
 
+
+#取随机账号
 def get_rand_user(request):
     user = WduserAuthuser.objects.filter(nickname='d52645894d8c5d83').order_by('?')
     if user:
@@ -14,7 +16,7 @@ def get_rand_user(request):
     return HttpResponse(account_name)
 
 
-
+#提交选取组织
 def set_rand_user(request):
     username = request.GET.get('username', default='')
     org1 = request.GET.get('org1', default='')
@@ -38,6 +40,7 @@ def set_rand_user(request):
         return HttpResponse('insert')
 
 
+#图标
 def favicon(request):
     imgDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     imgDir = os.path.join(imgDir, 'public/images')

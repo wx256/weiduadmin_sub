@@ -56,6 +56,3 @@ class WduserOrg(models.Model):
     class Meta:
         managed = False
         db_table = 'wduser_org'
-
-def ad():
-    pass

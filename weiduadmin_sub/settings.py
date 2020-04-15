@@ -122,7 +122,7 @@ DATABASES = {
         'NAME': 'wdadmin_uat',
         'USER': 'db_admin',
         'PASSWORD': 'Qwer1234',
-        'HOST':'rm-bp1i2yah9e5d27k26.mysql.rds.aliyuncs.com',
+        'HOST':'rm-bp1i2yah9e5d27k26bo.mysql.rds.aliyuncs.com',
         'PORT':'3306',
     }
 }
