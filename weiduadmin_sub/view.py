@@ -6,7 +6,10 @@ import os
 
 #取随机账号
 def get_rand_user(request):
-    user = WduserAuthuser.objects.filter(nickname='d52645894d8c5d83').order_by('?')
+    token = request.GET.get('token', default=None)
+    if not token:
+        return HttpResponse(None)
+    user = WduserAuthuser.objects.filter(nickname=token).order_by('?')
     if user:
         account_name = user[0].account_name
         #     user.nickname+="_"
@@ -18,6 +21,9 @@ def get_rand_user(request):
 
 #提交选取组织
 def set_rand_user(request):
+    token = request.GET.get('token', default=None)
+    if not token:
+        return HttpResponse(None)
     username = request.GET.get('username', default='')
     org1 = request.GET.get('org1', default='')
     org2 = request.GET.get('org2', default='')
@@ -31,11 +37,12 @@ def set_rand_user(request):
         user.org_level3 = org3
         user.org_level4 = org4
         user.org_level5 = org5
+        user.token=token
         user.save()
         return HttpResponse('update')
     else:
         user = WduserOrg(account_name=username, org_level1=org1, org_level2=org2, org_level3=org3, org_level4=org4,
-                         org_level5=org5)
+                         org_level5=org5,token=token)
         user.save()
         return HttpResponse('insert')
 

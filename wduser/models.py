@@ -52,6 +52,7 @@ class WduserOrg(models.Model):
     org_level3 = models.CharField(max_length=150, blank=True, null=True)
     org_level4 = models.CharField(max_length=150, blank=True, null=True)
     org_level5 = models.CharField(max_length=150, blank=True, null=True)
+    token = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         managed = False
