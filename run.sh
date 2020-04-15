@@ -1,1 +1,0 @@
-nohup nice -n 0 uwsgi --master --http :8000 --wsgi-file weiduadmin_sub/wsgi.py  --process 8 --listen=1024 --buffer-size=102400 --max-requests=4096 >/dev/null &
