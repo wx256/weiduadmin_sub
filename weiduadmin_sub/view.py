@@ -4,15 +4,15 @@ from wduser.models import WduserAuthuser, WduserOrg
 import os
 
 def get_rand_user(request):
-    try:
-        user = WduserAuthuser.objects.filter(nickname='d52645894d8c5d83').order_by('?')[0]
-        account_name = user.account_name
-        # if account_name:
+    user = WduserAuthuser.objects.filter(nickname='d52645894d8c5d83').order_by('?')
+    if user:
+        account_name = user[0].account_name
         #     user.nickname+="_"
         #     user.save()
-        return HttpResponse(account_name)
-    except:
-        return HttpResponse(None)
+    else:
+        account_name = None
+    return HttpResponse(account_name)
+
 
 
 def set_rand_user(request):
@@ -22,8 +22,8 @@ def set_rand_user(request):
     org3 = request.GET.get('org3', default='')
     org4 = request.GET.get('org4', default='')
     org5 = request.GET.get('org5', default='')
-    try:
-        user = WduserOrg.objects.get(account_name=username)
+    user = WduserOrg.objects.filter(account_name=username).last()
+    if user:
         user.org_level1 = org1
         user.org_level2 = org2
         user.org_level3 = org3
@@ -31,7 +31,7 @@ def set_rand_user(request):
         user.org_level5 = org5
         user.save()
         return HttpResponse('update')
-    except:
+    else:
         user = WduserOrg(account_name=username, org_level1=org1, org_level2=org2, org_level3=org3, org_level4=org4,
                          org_level5=org5)
         user.save()
