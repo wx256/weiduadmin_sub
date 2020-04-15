@@ -20,5 +20,3 @@ class WduserOrg(models.Model):
         managed = True
         db_table = 'wduser_org'
 
-def test():
-	pass
