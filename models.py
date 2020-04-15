@@ -19,3 +19,6 @@ class WduserOrg(models.Model):
     class Meta:
         managed = True
         db_table = 'wduser_org'
+
+def test():
+	pass
