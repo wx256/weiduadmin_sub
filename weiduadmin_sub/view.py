@@ -55,3 +55,5 @@ def favicon(request):
     # return HttpResponse('favicon...' + imgFilePath)
     image_data = open(imgFilePath, "rb").read()
     return HttpResponse(image_data, content_type="image/png")
+
+
