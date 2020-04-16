@@ -7,7 +7,7 @@ import os
 #取随机账号
 def get_rand_user(request):
     token = request.GET.get('token', default=None)
-    if not token:
+    if not token or len(token)!=16:
         return HttpResponse(None)
     user = WduserAuthuser.objects.filter(nickname=token).order_by('?')
     if user:
@@ -22,7 +22,7 @@ def get_rand_user(request):
 #提交选取组织
 def set_rand_user(request):
     token = request.GET.get('token', default=None)
-    if not token:
+    if not token or len(token)!=16:
         return HttpResponse(None)
     username = request.GET.get('username', default='')
     org1 = request.GET.get('org1', default='')
