@@ -48,7 +48,7 @@ def set_rand_user(request):
 
 
 #图标
-def favicon1(request):
+def favicon(request):
     imgDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     imgDir = os.path.join(imgDir, 'public/images')
     imgFilePath = os.path.join(imgDir, 'favicon.ico')
