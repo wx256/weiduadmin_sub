@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from . import view
 
+
 urlpatterns = [
     path(r'favicon.ico', view.favicon),
     path('get_rand_user/', view.get_rand_user),
